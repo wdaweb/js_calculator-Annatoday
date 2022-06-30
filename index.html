@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    html,
+    body{
+      z-index:1;
+      width: 100%;
+      height: 100%;
+      background:linear-gradient(90deg, #acb6e5, #86fde8);
+    }
+/* 共通部分 */
+    #table-one table td,#table-two table td{
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid rgba(255, 255, 255, 0.201);
+      background:radial-gradient(circle at 25% 20%,
+        rgba(255, 255, 255, 0.349) 0,rgba(204, 204, 204, 0.032) 50%);
+      box-shadow: 
+        inset 10px 10px 30px #7af9e278,
+        inset -10px -10px 30px rgba(255, 255, 255, 0.5);
+    }
+/* 上方table */
+    #table-one table{
+      position: absolute;
+      left: 50%;
+      top: 10%;
+      width: 500px;
+      height: 120px;
+      transform: translate(-50%, -10%);
+      font-size: 2rem;
+    }
+    #table-one table td {
+      width: 40px;
+      height: 20px;
+      border-radius: 28% 72% 32% 68% / 44% 39% 61% 56%    ;
+      animation: water2 6s linear infinite;
+    }
+    /* @keyframes water {
+      0%{
+        border-radius: 34% 66% 30% 70% / 67% 34% 66% 33% ;
+      }
+      50%{
+        border-radius: 65% 35% 83% 17% / 45% 68% 32% 55% ;
+      }
+      100%{
+        border-radius: 29% 71% 53% 47% / 45% 38% 62% 55% ;
+      }
+    } */
+/* 下方table */
+    #table-two table{
+      position: absolute;
+      left: 50%;
+      top: 75%;
+      width: 480px;
+      height: 600px;
+      transform: translate(-50%, -75%);
+      font-size: 2rem;
+    }
+    #table-two table td {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      animation: water2 6.5s linear infinite;
+    }
+    @keyframes water2 {
+      0%{
+        border-radius: 50%;
+      }
+      20%{
+        border-radius:53% 47% 29% 71% / 51% 28% 72% 49%;
+      }
+      50%{
+        border-radius:30% 70% 41% 59% / 30% 37% 63% 70% ;
+      }
+      100%{
+        border-radius: 50%;
+      }
+      80%{
+        border-radius:53% 47% 65% 35% / 34% 59% 41% 66% ;
+      }
+    }
+
+/* 泡泡 */
+    /* 範圍 */
+    .bubble{
+      width:100%;
+      height:100%;
+
+      position:absolute;
+      top:0;
+      left:0;
+    }
+    .bubble li{
+      list-style:none;
+      background:rgba(255,255,255,0.2);
+
+      position:absolute;
+      /*從底部出發*/
+      bottom:-100px; 
+      border-radius:100%;
+      animation:bubble 15s linear infinite;
+    }
+    /* 泡泡左上光點*/
+    .bubble li:before {
+        content: '';
+        width: 25%;
+        height: 25%;
+        border-radius: 100%;
+        background: rgba(255,255,255,0.2);
+
+        position: absolute;
+        left: 20%;
+        top: 21%;
+    }
+/* 複製泡泡們 */
+    .bubble li:nth-child(1){
+      width:20px;
+      height:20px;
+      left:15%;
+      animation-duration:12s;
+      animation-delay:2s;
+    }
+    .bubble li:nth-child(2){
+      width:40px;
+      height:40px;
+      left:40%;
+      animation-duration:10s;
+      animation-delay:9s;
+    }
+    .bubble li:nth-child(3){
+      width:25px;
+      height:25px;
+      left:30%;
+      animation-duration:18s;
+      animation-delay:3.5s;
+    }
+    .bubble li:nth-child(4){
+      width:60px;
+      height:60px;
+      left:55%;
+      animation-duration:20s;
+      animation-delay:10s;
+    }
+    .bubble li:nth-child(5){
+      width:20px;
+      height:20px;
+      left:35%;
+      animation-duration:16s;
+      animation-delay:2.5s;
+    }
+    .bubble li:nth-child(6){
+      width:80px;
+      height:80px;
+      left:85%;
+      animation-duration:16s;
+      animation-delay:2s;
+    }
+    .bubble li:nth-child(6){
+      width:90px;
+      height:90px;
+      left:90%;
+      animation-duration:15s;
+      animation-delay:8s;
+    }
+    .bubble li:nth-child(7){
+      width:70px;
+      height:70px;
+      left:80%;
+      animation-duration:20s;
+      animation-delay:3s;
+    }
+    .bubble li:nth-child(8){
+      width:80px;
+      height:80px;
+      left:70%;
+      animation-duration:15s;
+      animation-delay:2s;
+    }
+    .bubble li:nth-child(9){
+      width:30px;
+      height:30px;
+      left:60%;
+      animation-duration:20s;
+      animation-delay:3s;
+    }
+    .bubble li:nth-child(10){
+      width:50px;
+      height:50px;
+      left:10%;
+      animation-duration:12s;
+      animation-delay:5s;
+    }
+    @keyframes bubble {
+      /* 起跑 */
+      0%{
+        transform:translateY(0);
+        transform:translateY(0);
+      }
+      /* 終點 */
+      100%{
+        transform:translateY(-1080px);
+        transform:translateY(-1080px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="bubble">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <div id="table-one">
+    <table>
+      <tr>
+        <td colspan="4" id='input'>0</td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="table-two">
+    <table>
+    <tr>
+      <td>C</td>
+      <td>/</td>
+      <td>*</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td rowspan="2">+</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td rowspan="2">=</td>
+    </tr>
+    <tr>
+      <td colspan="2">0</td>
+      <td>.</td>
+    </tr>
+    </table>
+  </div>
+  
+<!-----------------------script------------------------------->
+  <script>
+    const input = document.getElementById('input')
+    const tds = document.querySelectorAll('td:not(#input)')
+
+    for (const td of tds) {
+      td.onclick = () => {
+        const text = td.innerText
+        if (text === '=') {
+          // 執行算式
+          input.innerText = eval(input.innerText)
+        } else if (text === 'C') {
+          // 重設
+          input.innerText = '0'
+        } else {
+          // 一般按鍵
+          if (input.innerText === '0') {
+            input.innerText = text
+          } else {
+            input.innerText += text
+          }
+        }
+      }
+    }
+
+    document.onkeydown = event => {
+      if (event.key === 'Enter') {
+        input.innerText = eval(input.innerText)
+      } else if (
+        !isNaN(parseInt(event.key)) ||
+        event.key === '+' ||
+        event.key === '-' ||
+        event.key === '*' ||
+        event.key === '/' ||
+        event.key === '.'
+      ) {
+        if (input.innerText === '0') {
+          input.innerText = event.key
+        } else {
+          input.innerText += event.key
+        }
+      }
+    }
+  </script>
+</body>
+</html>
